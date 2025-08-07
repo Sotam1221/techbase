@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>mission_</title>
+    </head>
+    <body>
+    </body>
+</html>
