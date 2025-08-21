@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Good Morning Booster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌅 Good Morning Booster</h1>
+  </header>
+
+  <main>
+    <!-- 挨拶メッセージ -->
+    <h2 id="greeting-message" class="greeting"></h2>
+
+    <!-- ログインボーナス -->
+    <section id="login-bonus-section">
+      <h2>ログインボーナス 🎁</h2>
+      <p id="login-status">読み込み中…</p>
+      <div class="input-group">
+        <button id="login-claim">受け取る</button>
+      </div>
+      <p><strong>連続日数:</strong> <span id="login-streak">0 日</span></p>
+      <p><strong>所持ポイント:</strong> <span id="login-points">0 pt</span></p>
+    </section>
+
+
+    <!-- 天気予報 -->
+    <section id="weather-section">
+      <h2>今日の天気 ⛅</h2>
+      <div id="weather-status">取得中…</div>
+      <div class="input-group">
+        <input type="text" id="weather-city" placeholder="都市名（例: Tokyo）" />
+        <button id="weather-refresh">更新</button>
+      </div>
+    </section>
+
+    <!-- 天気に基づく朝活レコメンド -->
+    <section id="recommend-section">
+      <h2>今日の朝活レコメンド 💡</h2>
+      <p id="recommend-text">天気に合わせて提案します</p>
+    </section>
+
+    <!-- 朝の気分登録 -->
+    <section id="mood-section">
+      <h2>今朝の気分 😊</h2>
+      <div id="mood-buttons">
+        <button data-mood="great">最高</button>
+        <button data-mood="good">良い</button>
+        <button data-mood="soso">ふつう</button>
+        <button data-mood="bad">いまいち</button>
+      </div>
+      <p><strong>今日の記録:</strong> <span id="mood-today">未登録</span></p>
+    </section>
+
+    <!-- ToDoリスト -->
+    <section id="todo-section">
+      <h2>今日のToDo ✏️</h2>
+      <div class="input-group">
+        <input type="text" id="todo-input" placeholder="やることを入力" />
+        <input type="date" id="todo-date" />
+        <button id="add-todo">追加</button>
+      </div>
+      <ul id="todo-list"></ul>
+    </section>
+
+    <!-- 今日の格言 -->
+    <section id="quote-section">
+      <h2>今日の格言ガチャ 🎯</h2>
+      <p id="quote-display">ここに名言・格言が表示されます</p>
+      <button id="get-quote">引く</button>
+      <button id="save-favorite">お気に入り登録</button>
+      <div>
+        <strong>❤️ お気に入り:</strong> <span id="favorite-quote">なし</span>
+      </div>
+    </section>
+
+    <!-- おみくじ -->
+    <section id="fortune-section">
+      <h2>今日のおみくじ 🔮</h2>
+      <p id="fortune-display">結果がここに表示されます</p>
+      <button id="draw-fortune">引く</button>
+      <div>
+        <strong>昨日の運勢:</strong> <span id="last-fortune">なし</span>
+      </div>
+    </section>
+
+    <!-- 一言日記 -->
+    <section id="diary-section">
+      <h2>一言日記 🌙</h2>
+      <div class="input-group">
+        <input type="text" id="diary-input" placeholder="今日はどんな一日？（一言）" />
+        <button id="diary-save">保存</button>
+      </div>
+      <p><strong>前回の記録:</strong> <span id="diary-last">なし</span></p>
+    </section>
+
+    <!-- 今日のおすすめ音楽 -->
+    <section id="music-section">
+      <h2>今日のおすすめ音楽 🎵</h2>
+      <p id="music-text">気分や天気に合わせて提案します</p>
+    </section>
+
+    <!-- リセット -->
+    <section id="reset-section">
+      <button id="reset-all">リセット</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Good Morning Booster</p>
+  </footer>
+
+  <!-- ESM エントリポイント -->
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

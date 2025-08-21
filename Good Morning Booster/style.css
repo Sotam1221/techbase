@@ -1,0 +1,212 @@
+/* ---------- 基本設定 ---------- */
+:root{
+  --bg: #f7f5f2;
+  --card: #ffffff;
+  --text: #222222;
+  --muted: #6b7280;
+  --accent: #ff9f43;
+  --accent-2:#ffa726;
+  --danger: #ef4444;
+  --ok: #10b981;
+  --shadow: 0 6px 18px rgba(0,0,0,.08);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --gap: 20px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0f1115;
+    --card: #171a21;
+    --text: #e5e7eb;
+    --muted:#9ca3af;
+    --accent:#ffa726;
+    --accent-2:#ffb74d;
+    --danger:#f87171;
+    --ok:#34d399;
+    --shadow: 0 6px 18px rgba(0,0,0,.5);
+  }
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.6;
+}
+
+/* ---------- レイアウト ---------- */
+header, footer{
+  text-align:center;
+  padding:18px 12px;
+}
+
+header{
+  position:sticky; top:0; z-index:10;
+  background:linear-gradient(180deg, rgba(255,167,38,.18), transparent);
+  backdrop-filter:saturate(1.2) blur(6px);
+}
+
+h1{
+  margin:0;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+
+main{
+  width:min(960px, 92vw);
+  margin: 20px auto 60px;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+
+section{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(0,0,0,.05);
+}
+
+h2{
+  margin:0 0 12px;
+  font-size:1.1rem;
+  font-weight:800;
+  display:flex; align-items:center; gap:8px;
+}
+
+/* 大きな挨拶 */
+.greeting{
+  background:linear-gradient(90deg, rgba(255,167,38,.18), transparent);
+  padding:18px;
+  border-radius:var(--radius);
+  text-align:center;
+  font-size: clamp(1.25rem, 2.6vw, 1.8rem);
+  font-weight:900;
+  letter-spacing:.02em;
+  box-shadow:var(--shadow);
+}
+
+/* ---------- フォーム/ボタン ---------- */
+.input-group{
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin-bottom:10px;
+}
+input[type="text"], input[type="date"]{
+  flex:1 1 220px;
+  padding:10px 12px;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:var(--radius-sm);
+  background:transparent;
+  color:var(--text);
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+input::placeholder{ color:var(--muted); }
+input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 4px rgba(255,167,38,.18);
+}
+
+button{
+  appearance:none; -webkit-appearance:none;
+  border:none; cursor:pointer;
+  background:var(--accent);
+  color:#fff; font-weight:700;
+  padding:10px 14px;
+  border-radius:var(--radius-sm);
+  transition: transform .05s ease, background .2s ease, opacity .2s ease;
+  box-shadow: 0 8px 16px rgba(255,167,38,.25);
+}
+button:hover{ background:var(--accent-2); }
+button:active{ transform: translateY(1px) scale(.99); }
+button:disabled{
+  opacity:.6; cursor:not-allowed;
+  box-shadow:none; background:var(--muted); color:#fff;
+}
+
+/* 削除ボタン（ToDo用） */
+.btn-delete{
+  background: var(--danger);
+  box-shadow: 0 8px 16px rgba(239,68,68,.25);
+}
+.btn-delete:hover{ filter:brightness(1.05); }
+
+/* ---------- リスト/カード ---------- */
+ul{ list-style:none; margin:0; padding:0; }
+#todo-list li{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; padding:10px 0; border-bottom:1px dashed rgba(0,0,0,.12);
+}
+#todo-list li:last-child{ border-bottom:none; }
+#todo-list li > div:first-child span{ display:block; }
+#todo-list small{ color:var(--muted); }
+
+/* ---------- 天気 ---------- */
+#weather-status{
+  font-weight:700;
+  padding:10px 12px;
+  border-radius:var(--radius-sm);
+  background: rgba(255,167,38,.08);
+}
+
+/* ---------- 気分（mood） ---------- */
+#mood-buttons{ display:flex; gap:8px; flex-wrap:wrap; }
+#mood-buttons button[data-mood="great"]{ background:linear-gradient(135deg,#34d399,#10b981); }
+#mood-buttons button[data-mood="good"] { background:linear-gradient(135deg,#60a5fa,#3b82f6); }
+#mood-buttons button[data-mood="soso"] { background:linear-gradient(135deg,#a78bfa,#8b5cf6); }
+#mood-buttons button[data-mood="bad"]  { background:linear-gradient(135deg,#f87171,#ef4444); }
+#mood-today{ color:var(--muted); font-weight:700; }
+
+/* ---------- 名言/おみくじ/音楽/日記 表示 ---------- */
+#quote-display, #fortune-display, #music-text, #recommend-text{
+  margin:8px 0 6px;
+  font-size:1rem; font-weight:700;
+}
+#favorite-quote, #last-fortune, #diary-last{
+  color:var(--muted);
+}
+
+/* ---------- アニメーション（軽め） ---------- */
+@keyframes pop {
+  0%{ transform:scale(.98); opacity:.2; }
+  100%{ transform:scale(1); opacity:1; }
+}
+section, .greeting { animation: pop .25s ease-out; }
+
+/* ---------- フッター ---------- */
+footer{
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+/* ---------- レスポンシブ ---------- */
+@media (min-width: 920px){
+  main{
+    grid-template-columns: 1fr 1fr;
+  }
+  /* 幅広に見せたいセクションは2列分使用 */
+  #todo-section, #music-section, #diary-section{
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- アクセシビリティ ---------- */
+button:focus-visible, a:focus-visible, input:focus-visible{
+  outline: 3px solid rgba(255,167,38,.45);
+  outline-offset: 2px;
+}
+
+/* ---------- リセットボタンエリア ---------- */
+#reset-section{
+  display:flex; justify-content:center;
+}
+#reset-all{
+  background: linear-gradient(135deg, #ef4444, #fb7185);
+  box-shadow: 0 10px 20px rgba(239,68,68,.28);
+}
+#reset-all:hover{ filter:brightness(1.05); }
